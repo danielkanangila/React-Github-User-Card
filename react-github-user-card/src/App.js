@@ -13,11 +13,12 @@ class App extends React.Component {
       username: 'danielkanangila',
     }
   }
-
+  
   onSearch = query => {
-    this.setState({
-      username: query,
-    });
+    // this.setState({
+    //   username: query,
+    // });
+    window.username = query;
   }
 
   render() {

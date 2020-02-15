@@ -46,6 +46,7 @@ const UserBlock = styled.div`
     @media (min-width: 1024px) {
         flex-direction: column;
         width: 250px;
+        margin-right: 20px;
     }
 
     .icon {

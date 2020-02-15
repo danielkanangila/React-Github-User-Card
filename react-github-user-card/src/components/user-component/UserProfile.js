@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import User from './User';
+import { UserGraphContainer } from './UserGraph';
 
 class  UserProfile extends React.Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class  UserProfile extends React.Component {
         axios.get(URL)
         .then(res => this.setState({user: res.data}))
         .catch(err => this.setState({errors: err.message}));
+        new window.GitHubCalendar('.graph-container', this.props.username, {responsive: true})
     }
 
     render() {
@@ -28,13 +30,21 @@ class  UserProfile extends React.Component {
                     </Error>
                 }
                 <User {...this.state.user} />
+                <UserGraphContainer className="graph-container">
+                    <h2 className="loading">Loading...</h2>
+                </UserGraphContainer>
             </Wrapper>
         )
     }
 }
 
 const Wrapper = styled.div`
-    
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 1024px) {
+        flex-direction: row;
+    }
 `;
 
 const Error = styled.h1`

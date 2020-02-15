@@ -34,3 +34,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.js-calendar-graph-svg {
+  width: 100%;
+}
