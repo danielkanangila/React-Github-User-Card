@@ -34,7 +34,9 @@ class Followers extends React.Component {
                         {this.state.errors}
                     </Error>
                 }
-                {this.state.followers.map(follower => <Follower key={follower.id} handleClick={this.props.handleClick} {...follower} />)}
+                <div className="follower-list">
+                    {this.state.followers.map(follower => <Follower key={follower.id} handleClick={this.props.handleClick} {...follower} />)}
+                </div>
             </Wrapper>
         )
     }
@@ -53,7 +55,7 @@ const Follower = props => {
 const FollowerWrapper = styled.div`
     display: flex;
     margin-bottom: 5px;
-    padding: 10px;
+    padding: 10px 15px;
     transition: all .3s;
     cursor: pointer;
     img {
@@ -92,6 +94,11 @@ const Wrapper = styled.div`
             font-size: 0.8rem;
             font-weight: normal;
         }
+    }
+    .follower-list {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 30px 0;
     }
 `
 
