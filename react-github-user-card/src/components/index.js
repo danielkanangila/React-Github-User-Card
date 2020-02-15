@@ -14,6 +14,7 @@ export const TextField = styled.input`
     border: 1px solid #cccccc;
     border-radius: 25px;
     width: 100%;
+    font-size: 14px;
 
     &:focus {
         border: 1px solid #2196f3

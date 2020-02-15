@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-top: 100px;
+  color: #212121;
 }
 
 code {
@@ -16,4 +18,19 @@ input {
   background: none;
   border: none;
   outline: none;
+}
+
+p, a {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #2196f3;
+  text-decoration: none;
+  transition: ease .3s;
+}
+
+a:hover {
+  text-decoration: underline;
 }

@@ -1,10 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Container, TextField } from './';
 
 const Nav = styled.nav`
     width: 100%;
     box-shadow: 1px 1px 6px 2px rgba(0,0,0,0.07);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    z-index: 900;
 
     .app-bar {
         display: flex;
@@ -29,24 +34,37 @@ const Nav = styled.nav`
     }
 `;
 
-const AppBar = props => {
-    const [query, setQuery] = useState('');
+class AppBar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            query: ''
+        }
 
-    const handleChange = e => {
-        setQuery(e.target.value);
-        props.onSearch(e.target.value);
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    return(
-        <Nav>
-            <Container className="app-bar">
-                <div className="search-field">
-                    <label htmlFor="searc">Search:</label>
-                    <TextField value={query} onChange={handleChange} type="text" name="search" placeholder="Github Username"  />
-                </div>
-            </Container>
-        </Nav>
-    )
+    handleChange = e => {
+        this.setState({
+            query: e.target.value
+        })
+        this.props.onSearch(e.target.value);
+    }
+
+    render() {
+
+        return(
+            <Nav>
+                <Container className="app-bar">
+                    <div className="search-field">
+                        <label htmlFor="searc">Search:</label>
+                        <TextField value={this.state.query} onChange={this.handleChange} type="text" name="search" placeholder="Github Username"  />
+                    </div>
+                </Container>
+            </Nav>
+        )
+    }
+
 }
 
 export default AppBar;
