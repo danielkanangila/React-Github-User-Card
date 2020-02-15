@@ -38,3 +38,7 @@ a:hover {
 .js-calendar-graph-svg {
   width: 100%;
 }
+
+* {
+  box-sizing: border-box;
+}

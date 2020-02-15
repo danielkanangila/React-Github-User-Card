@@ -22,11 +22,11 @@ class User extends React.Component {
                     <p className="user-details">{bio ? bio : 'Bio:'}</p>
                     <p className="user-details">
                         <i className="fas fa-map-marker-alt icon"></i>
-                        {location}
+                        {location ? location : '-'}
                     </p>
                     <a href={blog} className="user-details">
                         <i className="fas fa-link icon"></i>
-                        {blog}
+                        {blog ? blog : '-'}
                     </a>
                     <a href={html_url} className="user-details">
                         <i className="fab fa-github icon"></i>

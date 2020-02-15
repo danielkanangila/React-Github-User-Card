@@ -14,11 +14,22 @@ class  UserProfile extends React.Component {
     }
 
     componentDidMount() {
-        const URL = `${this.props.url}${this.props.username}`;
-        axios.get(URL)
-        .then(res => this.setState({user: res.data}))
+        this.fetchUser(this.props.url);
+    }
+
+    componentDidUpdate() {
+        this.fetchUser(this.props.url);
+    }
+
+    fetchUser = url => {
+        axios.get(url)
+        .then(res => {
+            if (this.state.user.id !== res.data.id) {
+                new window.GitHubCalendar('.graph-container', res.data.login, {responsive: true})
+                this.setState({user: res.data})
+            }
+        })
         .catch(err => this.setState({errors: err.message}));
-        new window.GitHubCalendar('.graph-container', this.props.username, {responsive: true})
     }
 
     render() {
@@ -29,10 +40,14 @@ class  UserProfile extends React.Component {
                         {this.state.errors}
                     </Error>
                 }
-                <User {...this.state.user} />
-                <UserGraphContainer className="graph-container">
-                    <h2 className="loading">Loading...</h2>
-                </UserGraphContainer>
+                {!this.state.errors &&
+                    <>
+                        <User {...this.state.user} />
+                        <UserGraphContainer className="graph-container">
+                            <h2 className="loading">Loading...</h2>
+                        </UserGraphContainer>
+                    </>
+                }
             </Wrapper>
         )
     }
@@ -51,6 +66,8 @@ const Error = styled.h1`
     text-align: center;
     color: #bdbdbd;
     padding: 20px;
+    text-align: center;
+    width: 100%;
 `;
 
 export default UserProfile;

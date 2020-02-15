@@ -1,6 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Container, TextField } from './';
+import Search from './search/Search';
+
+class AppBar extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+
+        return(
+            <Nav>
+                <Container className="app-bar">
+                    <Search onSearch={this.props.onSearch} />
+                </Container>
+            </Nav>
+        )
+    }
+
+}
 
 const Nav = styled.nav`
     width: 100%;
@@ -15,56 +34,7 @@ const Nav = styled.nav`
         display: flex;
         justify-content: flex-end;
     }
-    
-    .search-field {
-        display: flex;
-        align-items: center;
-        padding: 16px;
-        width: 100%;
 
-        @media (min-width: 750px) {
-            width: 40%;
-        }
-        
-        label {
-            text-transform: uppercase;
-            margin-right: 15px;
-            font-size: 0.8rem;
-        }
-    }
 `;
-
-class AppBar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            query: ''
-        }
-
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange = e => {
-        this.setState({
-            query: e.target.value
-        })
-        this.props.onSearch(e.target.value);
-    }
-
-    render() {
-
-        return(
-            <Nav>
-                <Container className="app-bar">
-                    <div className="search-field">
-                        <label htmlFor="searc">Search:</label>
-                        <TextField value={this.state.query} onChange={this.handleChange} type="text" name="search" placeholder="Github Username"  />
-                    </div>
-                </Container>
-            </Nav>
-        )
-    }
-
-}
 
 export default AppBar;

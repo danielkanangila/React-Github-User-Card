@@ -3,22 +3,21 @@ import AppBar from './components/AppBar';
 import { Container } from './components'
 import UserProfile from './components/user-component/UserProfile';
 
-const API_URL = 'https://api.github.com/users/';
+const BASE_URL = 'https://api.github.com/users/';
 
 class App extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      username: 'danielkanangila',
+      url: `${BASE_URL}danielkanangila`,
     }
   }
-  
-  onSearch = query => {
-    // this.setState({
-    //   username: query,
-    // });
-    window.username = query;
+
+  onSearch = url => {
+    this.setState({
+      url: url,
+    });
   }
 
   render() {
@@ -26,7 +25,7 @@ class App extends React.Component {
       <div className="App">
         <AppBar onSearch={this.onSearch} />
         <Container>
-          <UserProfile url={API_URL} username={this.state.username} />
+          <UserProfile url={this.state.url} />
         </Container>
       </div>
     );

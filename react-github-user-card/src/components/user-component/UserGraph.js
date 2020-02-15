@@ -4,7 +4,7 @@ export const UserGraphContainer = styled.div`
     width:100%;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 1px 6px -2px #000;
+    border: 1px solid #ccc;
     padding: 20px;
     margin: 20px 0;
 
