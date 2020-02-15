@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import axios from 'axios';
 import User from './User';
 import { UserGraphContainer } from './UserGraph';
+import Followers from './Followers';
+import { Error } from './../';
 
 class  UserProfile extends React.Component {
     constructor(props) {
@@ -43,9 +45,12 @@ class  UserProfile extends React.Component {
                 {!this.state.errors &&
                     <>
                         <User {...this.state.user} />
-                        <UserGraphContainer className="graph-container">
-                            <h2 className="loading">Loading...</h2>
-                        </UserGraphContainer>
+                        <div className="right">
+                            <UserGraphContainer className="graph-container">
+                                <h2 className="loading">Loading...</h2>
+                            </UserGraphContainer>
+                            <Followers handleClick={this.props.onUserSelected} url={this.state.user.followers_url} count={this.state.user.followers} />
+                        </div>
                     </>
                 }
             </Wrapper>
@@ -60,14 +65,12 @@ const Wrapper = styled.div`
     @media (min-width: 1024px) {
         flex-direction: row;
     }
-`;
 
-const Error = styled.h1`
-    text-align: center;
-    color: #bdbdbd;
-    padding: 20px;
-    text-align: center;
-    width: 100%;
+    .right {
+        @media (min-width: 1024px) {
+            width: 100%;
+        }
+    }
 `;
 
 export default UserProfile;

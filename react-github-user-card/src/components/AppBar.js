@@ -1,12 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container, TextField } from './';
+import { Container } from './';
 import Search from './search/Search';
 
 class AppBar extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
 

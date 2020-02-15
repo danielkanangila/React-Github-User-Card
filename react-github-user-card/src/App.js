@@ -14,7 +14,7 @@ class App extends React.Component {
     }
   }
 
-  onSearch = url => {
+  onUserSelected = url => {
     this.setState({
       url: url,
     });
@@ -23,9 +23,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <AppBar onSearch={this.onSearch} />
+        <AppBar onSearch={this.onUserSelected} />
         <Container>
-          <UserProfile url={this.state.url} />
+          <UserProfile onUserSelected={this.onUserSelected} url={this.state.url} />
         </Container>
       </div>
     );

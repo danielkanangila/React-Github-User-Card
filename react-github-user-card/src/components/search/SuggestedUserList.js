@@ -2,9 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 class SuggestedUserList extends React.Component {
-    constructor(props) {
-        super(props)
-    }
 
     render() {
         return(

@@ -3,17 +3,11 @@ import styled from 'styled-components';
 
 class User extends React.Component {
 
-    constructor(props) {
-        super(props)
-    }
-
     render() {
-        const {login, avatar_url, name, location, blog, html_url, followers, following, bio} = this.props;
+        const {login, avatar_url, name, location, blog, html_url, bio} = this.props;
         return(
             <UserBlock>
-                <div className="user-avatar">
-                    <img src={avatar_url} />
-                </div>
+                <img src={avatar_url} className="user-avatar" alt={name} />
                 <div className="user-info">
                     <h1 className="user-name">
                         {name}

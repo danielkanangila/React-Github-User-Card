@@ -21,3 +21,11 @@ export const TextField = styled.input`
     }
 `
 
+export const Error = styled.h1`
+    text-align: center;
+    color: #bdbdbd;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+`;
+

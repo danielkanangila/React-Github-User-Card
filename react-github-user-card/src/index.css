@@ -42,3 +42,8 @@ a:hover {
 * {
   box-sizing: border-box;
 }
+
+h3 {
+  margin: 0;
+  padding: 0;
+}
